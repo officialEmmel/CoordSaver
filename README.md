@@ -16,7 +16,7 @@ A simple coordinate save plugin for Bukkit Minecraft Java Server
 
 ```/cs teleport mylocation```: Teleports player to saved position
 
-### short command:
+### short commands:
 
 ```/sp mylocation```: Saves current position of player
 
