@@ -1,0 +1,31 @@
+name: CoordSaver
+version: 1.0.0
+author: emmmello
+description: A plugin that saves coords i guess
+main: systems.emmelnet.coordsaver.CoordSaver
+commands:
+  cs:
+    description: coord saver
+    usage: "/<command> [save|load] [name]"
+    permission: coordsaver.cs
+    permission-message: You don't have the coordsaver.cs permission.
+  sp:
+    description: save postion
+    usage: "/<command> [name]"
+    permission: coordsaver.sp
+    permission-message: You don't have the coordsaver.cs permission.
+  lp:
+    description: load postion
+    usage: "/<command> [name]"
+    permission: coordsaver.lp
+    permission-message: You don't have the coordsaver.lp permission.
+  rp:
+    description: remove postion
+    usage: "/<command> [name]"
+    permission: coordsaver.rp
+    permission-message: You don't have the coordsaver.rp permission.
+  tsp:
+    description: teleport to saved postion
+    usage: "/<command> [name]"
+    permission: coordsaver.tsp
+    permission-message: You don't have the coordsaver.tsp permission.
