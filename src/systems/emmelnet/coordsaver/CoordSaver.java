@@ -59,10 +59,10 @@ public class CoordSaver extends JavaPlugin {
                              String[] args) {
         if (command.getName().equalsIgnoreCase("cs")) {
             if(args.length < 1)
-                sender.sendMessage("Argument fehlt: /cs [save / load] name");
+                sender.sendMessage("Argument missing: /cs [save / load] name");
             else if (args.length < 2)
             {
-                sender.sendMessage("Name fehlt: /cs [save / load] name");
+                sender.sendMessage("Name missing: /cs [save / load] name");
             }
             else
             {
@@ -71,7 +71,7 @@ public class CoordSaver extends JavaPlugin {
                     if(args.length > 2)
                     {
                         if(args.length < 5) {
-                            sender.sendMessage(ChatColor.RED + "Koordinaten konnten nicht abgespeichert werden, da zu wenig Koordinaten angeben wurden.");
+                            sender.sendMessage(ChatColor.RED + "Coordinates could not be saved because too few coordinates were specified.");
                             return true;
                         }
 
@@ -83,7 +83,7 @@ public class CoordSaver extends JavaPlugin {
                         }
                         catch (NumberFormatException e)
                         {
-                            sender.sendMessage(ChatColor.RED + "Koordinaten konnten nicht gelesen werden.");
+                            sender.sendMessage(ChatColor.RED + "Coordinates could not be read.");
                             getLogger().info(e.getMessage());
                             return true;
                         }
@@ -108,18 +108,18 @@ public class CoordSaver extends JavaPlugin {
                 }
                 else
                 {
-                    sender.sendMessage("Argument nicht bekannt: " + args[0]);
+                    sender.sendMessage("Unknown argument: " + args[0]);
                 }
             }
             return true;
         }
         if (command.getName().equalsIgnoreCase("sp")) {
             if(args.length < 1)
-                sender.sendMessage("Argument fehlt: /sp name");
+                sender.sendMessage("Argument missing: /sp name");
             else if(args.length > 1)
             {
                 if(args.length < 4) {
-                    sender.sendMessage(ChatColor.RED + "Koordinaten konnten nicht abgespeichert werden, da zu wenig Koordinaten angeben wurden.");
+                    sender.sendMessage(ChatColor.RED + "Coordinates could not be saved because too few coordinates were specified.");
                     return true;
                 }
 
@@ -131,7 +131,7 @@ public class CoordSaver extends JavaPlugin {
                 }
                 catch (NumberFormatException e)
                 {
-                    sender.sendMessage(ChatColor.RED + "Koordinaten konnten nicht gelesen werden.");
+                    sender.sendMessage(ChatColor.RED + "Coordinates could not be read.");
                     getLogger().info(e.getMessage());
                     return true;
                 }
@@ -147,7 +147,7 @@ public class CoordSaver extends JavaPlugin {
         }
         if (command.getName().equalsIgnoreCase("lp")) {
             if(args.length < 1)
-                sender.sendMessage("Argument fehlt: /lp name");
+                sender.sendMessage("Argument missing: /lp name");
             else
             {
                 sender.sendMessage(loadCommand(args[0]));
@@ -156,7 +156,7 @@ public class CoordSaver extends JavaPlugin {
         }
         if (command.getName().equalsIgnoreCase("rp")) {
             if(args.length < 1)
-                sender.sendMessage("Argument fehlt: /rp name");
+                sender.sendMessage("Argument missing: /rp name");
             else
             {
                 sender.sendMessage(removeCommand(args[0]));
@@ -165,7 +165,7 @@ public class CoordSaver extends JavaPlugin {
         }
         if (command.getName().equalsIgnoreCase("tsp")) {
             if(args.length < 1)
-                sender.sendMessage("Argument fehlt: /tsp name");
+                sender.sendMessage("Argument missing: /tsp name");
             else
             {
                 sender.sendMessage(teleportCommand(args[0], sender));
@@ -233,16 +233,16 @@ public class CoordSaver extends JavaPlugin {
         float z = playerLocation.getBlockZ();
         String txt =  x + " " + y + " " + z + " " + name + " " + sender.getName();
         if(exists(name))
-            return ChatColor.RED + "'" + name + "' existiert bereits";
+            return ChatColor.RED + "'" + name + "' already exists";
         if(name.equalsIgnoreCase("all"))
-            return ChatColor.RED + "'all' kann nicht als Name verwendet werden";
+            return ChatColor.RED + "'all' could not be used as name";
         if(appendFile(saveTo, txt))
         {
-            return ChatColor.GREEN +"'" + name + "' wurde gespeichert";
+            return ChatColor.GREEN +"'" + name + "' was successfully saved";
         }
         else
         {
-            return ChatColor.RED + "Fehler beim Speichern von '" + name + "'. Wende dich an einen Administrator für mehr Informationen";
+            return ChatColor.RED + "Saving '" + name + "' failed. Contact an administrator for more information.";
         }
     }
 
@@ -251,16 +251,16 @@ public class CoordSaver extends JavaPlugin {
         Player executor = Bukkit.getPlayer(sender.getName());
         String txt =  x + " " + y + " " + z + " " + name + " " + sender.getName();
         if(exists(name))
-            return ChatColor.RED + "'" + name + "' existiert bereits";
+            return ChatColor.RED + "'" + name + "' already exists";
         if(name.equalsIgnoreCase("all"))
-            return ChatColor.RED + "'all' kann nicht als Name verwendet werden";
+            return ChatColor.RED + "'all' could not be used as name";
         if(appendFile(saveTo, txt))
         {
             return ChatColor.GREEN +"'" + name + "' wurde gespeichert";
         }
         else
         {
-            return ChatColor.RED + "Fehler beim Speichern von '" + name + "'. Wende dich an einen Administrator für mehr Informationen";
+            return ChatColor.RED + "Saving '" + name + "' failed. Contact an administrator for more information.";
         }
     }
 
@@ -287,7 +287,7 @@ public class CoordSaver extends JavaPlugin {
         }
         else
         {
-            return ChatColor.RED + "'" + name + "' wurde nicht gefunden.";
+            return ChatColor.RED + "'" + name + "' was not found.";
         }
     }
 
@@ -297,13 +297,13 @@ public class CoordSaver extends JavaPlugin {
         if(saved != null)
         {
             if(deleteByName(name))
-                return "'" + name + "' wurde erfolgreich gelöscht.";
+                return "'" + name + "' was successfully deleted.";
             else
-                return ChatColor.RED + "'" + name + "' konnte nicht gelöscht werden.";
+                return ChatColor.RED + "'" + name + "' could not be deleted.";
         }
         else
         {
-            return ChatColor.RED + "'" + name + "' wurde nicht gefunden.";
+            return ChatColor.RED + "'" + name + "' was not found.";
         }
     }
 
@@ -312,7 +312,7 @@ public class CoordSaver extends JavaPlugin {
         String saved = loadByName(name);
         if(name.equalsIgnoreCase("all"))
         {
-            return ChatColor.RED + "Spieler kann nicht zu allen Positionen teleportiert werden lul";
+            return ChatColor.RED + "Players can't be teleprted to all positions ;)";
         }
         else if(saved != null)
         {
@@ -335,11 +335,11 @@ public class CoordSaver extends JavaPlugin {
             float oldZ = location.getBlockZ();
             executor.teleport(location);
 
-            return ChatColor.YELLOW + "Du wurdest zu " + saved.split(" ")[0]  + ", " + saved.split(" ")[1]  + ", " + saved.split(" ")[2] + " ('" + name + "') teleportiert. \n" + ChatColor.GRAY + "Deine vorherige Position war: " + oldX + ", " + oldY + "," + oldZ;
+            return ChatColor.YELLOW + "You have been teleported to: " + saved.split(" ")[0]  + ", " + saved.split(" ")[1]  + ", " + saved.split(" ")[2] + " ('" + name + "') \n" + ChatColor.GRAY + "Your previous position was: " + oldX + ", " + oldY + "," + oldZ;
         }
         else
         {
-            return ChatColor.RED + "'" + name + "' wurde nicht gefunden.";
+            return ChatColor.RED + "'" + name + "' was not found.";
         }
     }
 
