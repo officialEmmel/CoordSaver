@@ -1,5 +1,5 @@
 name: CoordSaver
-version: 1.0.0
+version: 1.1.0
 author: emmmello
 description: A plugin that saves coords i guess
 main: systems.emmelnet.coordsaver.CoordSaver
